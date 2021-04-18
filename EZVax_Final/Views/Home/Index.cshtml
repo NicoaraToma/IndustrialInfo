@@ -1,31 +1,92 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+<head>
+    <style>
+        #centered{
+            display: block;
+            text-align:center;
+        }
+        .etapa{
+            color:white;
+        }
+        .vaxsteps{
+            font-size:55px;
+        }
+        iframe {
+            padding: 1em;
+            text-align: center;
+            display: block;
+            margin: 0 auto;
+        }
+        #covid_title {
+            text-align: center;
+            font-size: 47px;
+        }
+        
+        .jumbotron{
+            background-color: transparent;
+        }
+    </style>
+</head>
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<body>
+    <div class="jumbotron">
+        <h1 id="covid_title">How Does the Covid Vaccine Actually Work?</h1>
+        <iframe width="960" height="540" src="https://www.youtube.com/embed/uWGTciX795o" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <h1 class="vaxsteps" id="centered">Etapele de distributie a vaccinului anti-Covid</h1>
+    <hr />
+    <br />  
+    <h2  id="centered">Cine va lua parte la fiecare etapa?</h2>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <h2 class="etapa" id="centered">Etapa 1</h2>
+            <hr />
+            <h4 class="etapa" id="centered">
+                Lucrătorii din domeniile sănătății și social
+            </h4>
+        </div>
+        <div class="col-md-4">
+            <h2 class="etapa" id="centered">Etapa 2</h2>
+            <hr />
+            <h4 class="etapa" id="centered">
+                Populația cu grad ridicat de risc
+            </h4>
+        </div>
+        <div class="col-md-4">
+            <h2 class="etapa" id="centered">Etapa 3</h2>
+            <hr />
+            <h4 class="etapa" id="centered">
+                Populația generală
+            </h4>
+        </div>
+    </div>
+    <hr />
+    <br />
+    <h1 id="centered">Resurse Utile</h1>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    <div class="row">
+        <div class="col-md-3">
+            <a id="centered" href="https://vaccinare-covid.gov.ro/vaccinarea-sars-cov-2/top-10-informatii-sigure/">
+                <img width="250" height="250" src="~/Images_Anchor-01.png" alt="Safe Info" />
+            </a>
+        </div>
+        <div class="col-md-3">
+            <a id="centered" href="https://vaccinare-covid.gov.ro/vaccinarea-sars-cov-2/top-10-informatii-inselatoare/">
+                <img width="250" height="250" src="~/Images_Anchor-02.png" alt=" Not Safe Info" />
+            </a>
+        </div>
+        <div class="col-md-3">
+            <a id="centered" href="https://vaccinare-covid.gov.ro/resurse/ghiduri-de-comunicare-medicala/">
+                <img width="250" height="250" src="~/Images_Anchor-03.png" alt=" Official Info" />
+            </a>
+        </div>
+        <div class="col-md-3">
+            <a id="centered" href="https://vaccinare-covid.gov.ro/resurse/mic-dictionar-de-vaccinare/">
+                <img width="250" height="250" src="~/Images_Anchor-04.png" alt=" Terms one must know" />
+            </a>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+</body>

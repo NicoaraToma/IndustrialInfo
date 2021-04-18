@@ -15,6 +15,12 @@
             padding: 50px;
         }
 
+        body {
+            background: rgb(5,102,141);
+            background: linear-gradient(0deg, rgba(5,102,141,1) 0%, rgba(2,195,154,1) 100%);
+            color: black;
+        }
+
     </style>
 </head>
 <body>
@@ -29,7 +35,7 @@
                    <span class="icon-bar"></span>
                </button>
                <a class="navbar-brand" href="/">
-                   <img class="logo_img" alt="Brand" src="./Logo_EZVAX_transparentbg-01.png">
+                   <img class="logo_img" alt="Brand" src="~/Logo_EZVAX_transparentbg-01.png">
                </a>
            </div>
 
@@ -40,7 +46,7 @@
                    <li><a class="nav-link" href="/Home/Contact">Programari</a></li>
                    <li><a class="nav-link" href="/Home/Index">Forum</a></li>
                </ul>
-               <button class="btn btn-primary navbar-btn navbar-right">Login/Register</button>
+               <a href="/User/AddOrEdit"><button class="btn btn-primary navbar-btn navbar-right">Login/Register</button></a>
            </div><!-- /.navbar-collapse -->
        </div><!-- /.container-fluid -->
 </nav>
@@ -48,7 +54,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>@DateTime.Now.Year - II Project - Group 3 - ©UTCN</p>
         </footer>
     </div>
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using EZVax_Final.Models;
 using System.Web.Mvc;
 
 namespace EZVax_Final.Controllers

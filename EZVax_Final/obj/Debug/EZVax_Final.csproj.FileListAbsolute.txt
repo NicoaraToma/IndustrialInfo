@@ -51,6 +51,8 @@ D:\Faculta\An3Sem2\Industr. Informatic\IndustrialInfo\EZVax_Final\bin\roslyn\vbc
 D:\Faculta\An3Sem2\Industr. Informatic\IndustrialInfo\EZVax_Final\bin\roslyn\VBCSCompiler.exe
 D:\Faculta\An3Sem2\Industr. Informatic\IndustrialInfo\EZVax_Final\bin\roslyn\VBCSCompiler.exe.config
 D:\Faculta\An3Sem2\Industr. Informatic\IndustrialInfo\EZVax_Final\bin\Antlr3.Runtime.dll
+D:\Faculta\An3Sem2\Industr. Informatic\IndustrialInfo\EZVax_Final\bin\EntityFramework.dll
+D:\Faculta\An3Sem2\Industr. Informatic\IndustrialInfo\EZVax_Final\bin\EntityFramework.SqlServer.dll
 D:\Faculta\An3Sem2\Industr. Informatic\IndustrialInfo\EZVax_Final\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 D:\Faculta\An3Sem2\Industr. Informatic\IndustrialInfo\EZVax_Final\bin\Microsoft.Web.Infrastructure.dll
 D:\Faculta\An3Sem2\Industr. Informatic\IndustrialInfo\EZVax_Final\bin\Newtonsoft.Json.dll
@@ -62,6 +64,8 @@ D:\Faculta\An3Sem2\Industr. Informatic\IndustrialInfo\EZVax_Final\bin\System.Web
 D:\Faculta\An3Sem2\Industr. Informatic\IndustrialInfo\EZVax_Final\bin\System.Web.WebPages.dll
 D:\Faculta\An3Sem2\Industr. Informatic\IndustrialInfo\EZVax_Final\bin\System.Web.WebPages.Razor.dll
 D:\Faculta\An3Sem2\Industr. Informatic\IndustrialInfo\EZVax_Final\bin\WebGrease.dll
+D:\Faculta\An3Sem2\Industr. Informatic\IndustrialInfo\EZVax_Final\bin\EntityFramework.xml
+D:\Faculta\An3Sem2\Industr. Informatic\IndustrialInfo\EZVax_Final\bin\EntityFramework.SqlServer.xml
 D:\Faculta\An3Sem2\Industr. Informatic\IndustrialInfo\EZVax_Final\bin\System.Web.Helpers.xml
 D:\Faculta\An3Sem2\Industr. Informatic\IndustrialInfo\EZVax_Final\bin\System.Web.Mvc.xml
 D:\Faculta\An3Sem2\Industr. Informatic\IndustrialInfo\EZVax_Final\bin\System.Web.Optimization.xml
