@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        .logo_img { 
+            height: 70px;
+            width: 70px;
+        }
+        .nav-link{
+            padding: 50px;
+        }
+
+        body {
+            background: rgb(5,102,141);
+            background: linear-gradient(0deg, rgba(5,102,141,1) 0%, rgba(2,195,154,1) 100%);
+            color: black;
+        }
+
+    </style>
+</head>
+<body>
+   <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+       <div class="container-fluid">
+           <!-- Brand and toggle get grouped for better mobile display -->
+           <div class="navbar-header">
+               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                   <span class="sr-only">Toggle navigation</span>
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+               </button>
+               <a class="navbar-brand" href="/">
+                   <img class="logo_img" alt="Brand" src="~/Logo_EZVAX_transparentbg-01.png">
+               </a>
+           </div>
+
+           <!-- Collect the nav links, forms, and other content for toggling -->
+           <div class="collapse navbar-collapse">
+               <ul class="nav navbar-nav navbar-left">
+                   <li><a class="nav-link" href="/Home/About">Profil </a></li>
+                   <li><a class="nav-link" href="/Home/Contact">Programari</a></li>
+                   <li><a class="nav-link" href="/Home/Index">Forum</a></li>
+               </ul>
+               <a href="/User/AddOrEdit"><button class="btn btn-primary navbar-btn navbar-right">Login/Register</button></a>
+           </div><!-- /.navbar-collapse -->
+       </div><!-- /.container-fluid -->
+</nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>@DateTime.Now.Year - II Project - Group 3 - ©UTCN</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
