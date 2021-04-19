@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HospitalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="isAdmin" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Clinica">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nume" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="adresa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="numarProgramari" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Programare" Relationship="Self.fk_clinica" FromRole="Clinica" ToRole="Programare" />
+    <NavigationProperty Name="Stoc" Relationship="Self.fk_stoc" FromRole="Clinica" ToRole="Stoc" />
+  </EntityType>
+  <EntityType Name="Comentariu">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idUser" Type="Int32" Nullable="false" />
+    <Property Name="idPost" Type="Int32" Nullable="false" />
+    <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="data" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="likeCounter" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Postare" Relationship="Self.fk_postcom" FromRole="Comentariu" ToRole="Postare" />
+    <NavigationProperty Name="Users" Relationship="Self.fk_usercom" FromRole="Comentariu" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Postare">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idUser" Type="Int32" Nullable="false" />
+    <Property Name="titlu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="data" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="likeCounter" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Comentariu" Relationship="Self.fk_postcom" FromRole="Postare" ToRole="Comentariu" />
+    <NavigationProperty Name="Users" Relationship="Self.fk_userpost" FromRole="Postare" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="ProfilMedical">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idUser" Type="Int32" Nullable="false" />
+    <Property Name="varsta" Type="Int32" Nullable="false" />
+    <Property Name="gen" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="grupaSanguina" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="boliCronice" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="anticorpi" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="idSimptom" Type="Int32" />
+    <NavigationProperty Name="Simptome" Relationship="Self.fk_simptom_simpid" FromRole="ProfilMedical" ToRole="Simptome" />
+    <NavigationProperty Name="Users" Relationship="Self.fk_userprofile" FromRole="ProfilMedical" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Programare">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idUser" Type="Int32" Nullable="false" />
+    <Property Name="idClinica" Type="Int32" Nullable="false" />
+    <Property Name="dataVaccin" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="dataRapel" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Clinica" Relationship="Self.fk_clinica" FromRole="Programare" ToRole="Clinica" />
+    <NavigationProperty Name="Users" Relationship="Self.fk_user" FromRole="Programare" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Resurse">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Simptome">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="numeSimptom" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="ProfilMedical" Relationship="Self.fk_simptom_simpid" FromRole="Simptome" ToRole="ProfilMedical" />
+  </EntityType>
+  <EntityType Name="Stoc">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idClinica" Type="Int32" Nullable="false" />
+    <Property Name="stocAstraZeneca" Type="Int32" />
+    <Property Name="stocPfizer" Type="Int32" />
+    <Property Name="stocSputnik" Type="Int32" />
+    <Property Name="stocModerna" Type="Int32" />
+    <NavigationProperty Name="Clinica" Relationship="Self.fk_stoc" FromRole="Stoc" ToRole="Clinica" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nume" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="prenume" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CNP" Type="String" MaxLength="13" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="numarTelefon" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Comentariu" Relationship="Self.fk_usercom" FromRole="Users" ToRole="Comentariu" />
+    <NavigationProperty Name="Postare" Relationship="Self.fk_userpost" FromRole="Users" ToRole="Postare" />
+    <NavigationProperty Name="ProfilMedical" Relationship="Self.fk_userprofile" FromRole="Users" ToRole="ProfilMedical" />
+    <NavigationProperty Name="Programare" Relationship="Self.fk_user" FromRole="Users" ToRole="Programare" />
+  </EntityType>
+  <EntityType Name="Vaccin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nume" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="durataRapel" Type="Int32" Nullable="false" />
+    <Property Name="cantitate" Type="Int32" Nullable="false" />
+    <Property Name="contraindicatii" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="alergii" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="fk_clinica">
+    <End Role="Clinica" Type="Self.Clinica" Multiplicity="1" />
+    <End Role="Programare" Type="Self.Programare" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clinica">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Programare">
+        <PropertyRef Name="idClinica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_stoc">
+    <End Role="Clinica" Type="Self.Clinica" Multiplicity="1" />
+    <End Role="Stoc" Type="Self.Stoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clinica">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Stoc">
+        <PropertyRef Name="idClinica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_postcom">
+    <End Role="Postare" Type="Self.Postare" Multiplicity="1" />
+    <End Role="Comentariu" Type="Self.Comentariu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Postare">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Comentariu">
+        <PropertyRef Name="idPost" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_usercom">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Comentariu" Type="Self.Comentariu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Comentariu">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_userpost">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Postare" Type="Self.Postare" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Postare">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_simptom_simpid">
+    <End Role="Simptome" Type="Self.Simptome" Multiplicity="0..1" />
+    <End Role="ProfilMedical" Type="Self.ProfilMedical" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Simptome">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ProfilMedical">
+        <PropertyRef Name="idSimptom" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_userprofile">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="ProfilMedical" Type="Self.ProfilMedical" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ProfilMedical">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_user">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Programare" Type="Self.Programare" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Programare">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HospitalEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Admin" EntityType="Self.Admin" />
+    <EntitySet Name="Clinica" EntityType="Self.Clinica" />
+    <EntitySet Name="Comentariu" EntityType="Self.Comentariu" />
+    <EntitySet Name="Postare" EntityType="Self.Postare" />
+    <EntitySet Name="ProfilMedical" EntityType="Self.ProfilMedical" />
+    <EntitySet Name="Programare" EntityType="Self.Programare" />
+    <EntitySet Name="Resurse" EntityType="Self.Resurse" />
+    <EntitySet Name="Simptome" EntityType="Self.Simptome" />
+    <EntitySet Name="Stoc" EntityType="Self.Stoc" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <EntitySet Name="Vaccin" EntityType="Self.Vaccin" />
+    <AssociationSet Name="fk_clinica" Association="Self.fk_clinica">
+      <End Role="Clinica" EntitySet="Clinica" />
+      <End Role="Programare" EntitySet="Programare" />
+    </AssociationSet>
+    <AssociationSet Name="fk_stoc" Association="Self.fk_stoc">
+      <End Role="Clinica" EntitySet="Clinica" />
+      <End Role="Stoc" EntitySet="Stoc" />
+    </AssociationSet>
+    <AssociationSet Name="fk_postcom" Association="Self.fk_postcom">
+      <End Role="Postare" EntitySet="Postare" />
+      <End Role="Comentariu" EntitySet="Comentariu" />
+    </AssociationSet>
+    <AssociationSet Name="fk_usercom" Association="Self.fk_usercom">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Comentariu" EntitySet="Comentariu" />
+    </AssociationSet>
+    <AssociationSet Name="fk_userpost" Association="Self.fk_userpost">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Postare" EntitySet="Postare" />
+    </AssociationSet>
+    <AssociationSet Name="fk_simptom_simpid" Association="Self.fk_simptom_simpid">
+      <End Role="Simptome" EntitySet="Simptome" />
+      <End Role="ProfilMedical" EntitySet="ProfilMedical" />
+    </AssociationSet>
+    <AssociationSet Name="fk_userprofile" Association="Self.fk_userprofile">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="ProfilMedical" EntitySet="ProfilMedical" />
+    </AssociationSet>
+    <AssociationSet Name="fk_user" Association="Self.fk_user">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Programare" EntitySet="Programare" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
