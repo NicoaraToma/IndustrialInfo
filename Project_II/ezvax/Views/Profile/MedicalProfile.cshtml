@@ -1,0 +1,96 @@
+﻿@model ezvax.Models.ProfilMedical
+
+@{
+    ViewBag.Title = "Profil";
+    Layout = null;
+     if (Session["userID"] == null)
+    {
+        Response.Redirect("~/Login/Authentification");
+    }
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Profile</title>
+</head>
+<body>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    
+    
+    @using (Html.BeginForm("MedicalProfile","Profile",FormMethod.Post)) 
+    {
+       // @Html.AntiForgeryToken()
+        
+    <div class="form-horizontal">
+        <h4>ProfilMedical</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.varsta, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.varsta, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.varsta, "", new { @class = "text-danger" })
+                <label class="field-validation-error">@Html.DisplayFor(model => model.ageErrorMessage)</label>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.gen, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.gen, new SelectList(Model.genders, "gen1", "gen1"), "Select")
+                @Html.ValidationMessageFor(model => model.gen, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.grupaSanguina, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.grupaSanguina, new SelectList(Model.grupeSange, "numeGrupa", "numeGrupa"), "Select")
+                @Html.ValidationMessageFor(model => model.grupaSanguina, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.boliCronice, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.boliCronice, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.boliCronice, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.anticorpi, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.anticorpi, new SelectList(Model.Anticorpis, "yesOrNo", "yesOrNo"), "Select")
+                @Html.ValidationMessageFor(model => model.anticorpi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.simptome, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.simptome, new SelectList(Model.simptomes, "numeSimptom", "numeSimptom"), "Select")
+                @Html.ValidationMessageFor(model => model.simptome, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-2">
+                <label class="label-success">@ViewBag.SuccessMessage</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-2">
+                <label class="label-danger">@ViewBag.DuplicateMessage</label>
+            </div>
+        </div>
+    </div>
+    }
+</body>
+</html>

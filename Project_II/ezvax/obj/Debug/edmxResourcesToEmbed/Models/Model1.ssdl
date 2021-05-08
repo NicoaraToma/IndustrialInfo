@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HospitalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="userAdmin" Type="varchar" MaxLength="55" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="55" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Anticorpi">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="yesOrNo" Type="varchar" MaxLength="3" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Clinica">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nume" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="adresa" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="numarProgramari" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Comentariu">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idUser" Type="int" Nullable="false" />
+    <Property Name="idPost" Type="int" Nullable="false" />
+    <Property Name="text" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="data" Type="date" Nullable="false" />
+    <Property Name="likeCounter" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Gen">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="gen" Type="varchar" MaxLength="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GrupeSange">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="numeGrupa" Type="varchar" MaxLength="55" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Postare">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idUser" Type="int" Nullable="false" />
+    <Property Name="titlu" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="text" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="data" Type="date" Nullable="false" />
+    <Property Name="likeCounter" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProfilMedical">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idUser" Type="int" Nullable="false" />
+    <Property Name="varsta" Type="int" Nullable="false" />
+    <Property Name="gen" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="grupaSanguina" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="boliCronice" Type="nvarchar(max)" />
+    <Property Name="anticorpi" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="simptome" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Programare">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idUser" Type="int" Nullable="false" />
+    <Property Name="idClinica" Type="int" Nullable="false" />
+    <Property Name="dataVaccin" Type="date" Nullable="false" />
+    <Property Name="dataRapel" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Resurse">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="link" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Simptome">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="numeSimptom" Type="varchar" MaxLength="55" />
+  </EntityType>
+  <EntityType Name="Stoc">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idClinica" Type="int" Nullable="false" />
+    <Property Name="stocAstraZeneca" Type="int" />
+    <Property Name="stocPfizer" Type="int" />
+    <Property Name="stocSputnik" Type="int" />
+    <Property Name="stocModerna" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nume" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="prenume" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CNP" Type="nchar" MaxLength="13" Nullable="false" />
+    <Property Name="email" Type="nvarchar" MaxLength="50" />
+    <Property Name="numarTelefon" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="password" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vaccin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nume" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="durataRapel" Type="int" Nullable="false" />
+    <Property Name="cantitate" Type="int" Nullable="false" />
+    <Property Name="contraindicatii" Type="nvarchar(max)" />
+    <Property Name="alergii" Type="nvarchar(max)" />
+  </EntityType>
+  <Association Name="fk_clinica">
+    <End Role="Clinica" Type="Self.Clinica" Multiplicity="1" />
+    <End Role="Programare" Type="Self.Programare" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clinica">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Programare">
+        <PropertyRef Name="idClinica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_postcom">
+    <End Role="Postare" Type="Self.Postare" Multiplicity="1" />
+    <End Role="Comentariu" Type="Self.Comentariu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Postare">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Comentariu">
+        <PropertyRef Name="idPost" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_stoc">
+    <End Role="Clinica" Type="Self.Clinica" Multiplicity="1" />
+    <End Role="Stoc" Type="Self.Stoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clinica">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Stoc">
+        <PropertyRef Name="idClinica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_user">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Programare" Type="Self.Programare" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Programare">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_usercom">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Comentariu" Type="Self.Comentariu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Comentariu">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_userpost">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Postare" Type="Self.Postare" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Postare">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_userprofile">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="ProfilMedical" Type="Self.ProfilMedical" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ProfilMedical">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HospitalModelStoreContainer">
+    <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Anticorpi" EntityType="Self.Anticorpi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Clinica" EntityType="Self.Clinica" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Comentariu" EntityType="Self.Comentariu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Gen" EntityType="Self.Gen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GrupeSange" EntityType="Self.GrupeSange" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Postare" EntityType="Self.Postare" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProfilMedical" EntityType="Self.ProfilMedical" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Programare" EntityType="Self.Programare" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Resurse" EntityType="Self.Resurse" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Simptome" EntityType="Self.Simptome" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Stoc" EntityType="Self.Stoc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vaccin" EntityType="Self.Vaccin" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_clinica" Association="Self.fk_clinica">
+      <End Role="Clinica" EntitySet="Clinica" />
+      <End Role="Programare" EntitySet="Programare" />
+    </AssociationSet>
+    <AssociationSet Name="fk_postcom" Association="Self.fk_postcom">
+      <End Role="Postare" EntitySet="Postare" />
+      <End Role="Comentariu" EntitySet="Comentariu" />
+    </AssociationSet>
+    <AssociationSet Name="fk_stoc" Association="Self.fk_stoc">
+      <End Role="Clinica" EntitySet="Clinica" />
+      <End Role="Stoc" EntitySet="Stoc" />
+    </AssociationSet>
+    <AssociationSet Name="fk_user" Association="Self.fk_user">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Programare" EntitySet="Programare" />
+    </AssociationSet>
+    <AssociationSet Name="fk_usercom" Association="Self.fk_usercom">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Comentariu" EntitySet="Comentariu" />
+    </AssociationSet>
+    <AssociationSet Name="fk_userpost" Association="Self.fk_userpost">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Postare" EntitySet="Postare" />
+    </AssociationSet>
+    <AssociationSet Name="fk_userprofile" Association="Self.fk_userprofile">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="ProfilMedical" EntitySet="ProfilMedical" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
