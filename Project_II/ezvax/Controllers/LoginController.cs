@@ -23,7 +23,7 @@ namespace ezvax.Controllers
                 if (userDetails == null)
                 {
                     userModel.LoginErrorMessage = "Wrong CNP or password.";
-                    return View("Login", userModel);
+                    return View("Authentification", userModel);
                 }
                 else
                 {

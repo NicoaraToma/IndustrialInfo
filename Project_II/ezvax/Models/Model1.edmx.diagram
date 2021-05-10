@@ -4,29 +4,30 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="62a32a4d6b0d4e41bdcc747717fb4043" Name="Diagram1">
-        <EntityTypeShape EntityType="HospitalModel.Admin" Width="1.5" PointX="5.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="HospitalModel.Anticorpi" Width="1.5" PointX="5.75" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="HospitalModel.Clinica" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
+      <Diagram DiagramId="4e87bc3873bf4a5486e20a6f0e666dbe" Name="Diagram1">
+        <EntityTypeShape EntityType="HospitalModel.Admin" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalModel.Anticorpi" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalModel.Clinica" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="HospitalModel.Comentariu" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="HospitalModel.Gen" Width="1.5" PointX="7.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="HospitalModel.GrupeSange" Width="1.5" PointX="7.75" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="HospitalModel.Postare" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalModel.Gen" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalModel.GrupeSange" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalModel.Postare" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="HospitalModel.ProfilMedical" Width="1.5" PointX="3" PointY="11.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="HospitalModel.Programare" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="HospitalModel.Resurse" Width="1.5" PointX="7.75" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="HospitalModel.Simptome" Width="1.5" PointX="9.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="HospitalModel.Stoc" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="HospitalModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalModel.Programare" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalModel.Resurse" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalModel.Simptome" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalModel.Stoc" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="HospitalModel.Users" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="HospitalModel.Vaccin" Width="1.5" PointX="9.75" PointY="7" IsExpanded="true" />
-        <AssociationConnector Association="HospitalModel.fk_clinica" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="HospitalModel.Vaccin" Width="1.5" PointX="0.75" PointY="11.125" IsExpanded="true" />
+        <AssociationConnector Association="HospitalModel.FK__Programar__idCli__2BFE89A6" ManuallyRouted="false" />
         <AssociationConnector Association="HospitalModel.fk_stoc" ManuallyRouted="false" />
         <AssociationConnector Association="HospitalModel.fk_postcom" ManuallyRouted="false" />
         <AssociationConnector Association="HospitalModel.fk_usercom" ManuallyRouted="false" />
         <AssociationConnector Association="HospitalModel.fk_userpost" ManuallyRouted="false" />
         <AssociationConnector Association="HospitalModel.fk_userprofile" ManuallyRouted="false" />
-        <AssociationConnector Association="HospitalModel.fk_user" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalModel.FK__Programar__idUse__2CF2ADDF" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalModel.FK__Programar__idVac__2B0A656D" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

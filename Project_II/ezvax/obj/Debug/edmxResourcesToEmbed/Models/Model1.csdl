@@ -23,7 +23,7 @@
     <Property Name="nume" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="adresa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="numarProgramari" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Programare" Relationship="Self.fk_clinica" FromRole="Clinica" ToRole="Programare" />
+    <NavigationProperty Name="Programare" Relationship="Self.FK__Programar__idCli__2BFE89A6" FromRole="Clinica" ToRole="Programare" />
     <NavigationProperty Name="Stoc" Relationship="Self.fk_stoc" FromRole="Clinica" ToRole="Stoc" />
   </EntityType>
   <EntityType Name="Comentariu">
@@ -87,10 +87,12 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="idUser" Type="Int32" Nullable="false" />
     <Property Name="idClinica" Type="Int32" Nullable="false" />
+    <Property Name="idVaccin" Type="Int32" Nullable="false" />
     <Property Name="dataVaccin" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="dataRapel" Type="DateTime" Nullable="false" Precision="0" />
-    <NavigationProperty Name="Clinica" Relationship="Self.fk_clinica" FromRole="Programare" ToRole="Clinica" />
-    <NavigationProperty Name="Users" Relationship="Self.fk_user" FromRole="Programare" ToRole="Users" />
+    <NavigationProperty Name="Clinica" Relationship="Self.FK__Programar__idCli__2BFE89A6" FromRole="Programare" ToRole="Clinica" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__Programar__idUse__2CF2ADDF" FromRole="Programare" ToRole="Users" />
+    <NavigationProperty Name="Vaccin" Relationship="Self.FK__Programar__idVac__2B0A656D" FromRole="Programare" ToRole="Vaccin" />
   </EntityType>
   <EntityType Name="Resurse">
     <Key>
@@ -142,20 +144,21 @@
     <NavigationProperty Name="Comentariu" Relationship="Self.fk_usercom" FromRole="Users" ToRole="Comentariu" />
     <NavigationProperty Name="Postare" Relationship="Self.fk_userpost" FromRole="Users" ToRole="Postare" />
     <NavigationProperty Name="ProfilMedical" Relationship="Self.fk_userprofile" FromRole="Users" ToRole="ProfilMedical" />
-    <NavigationProperty Name="Programare" Relationship="Self.fk_user" FromRole="Users" ToRole="Programare" />
+    <NavigationProperty Name="Programare" Relationship="Self.FK__Programar__idUse__2CF2ADDF" FromRole="Users" ToRole="Programare" />
   </EntityType>
   <EntityType Name="Vaccin">
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="nume" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="nume" Type="String" MaxLength="55" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="durataRapel" Type="Int32" Nullable="false" />
     <Property Name="cantitate" Type="Int32" Nullable="false" />
-    <Property Name="contraindicatii" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="alergii" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="contraindicatii" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="alergii" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Programare" Relationship="Self.FK__Programar__idVac__2B0A656D" FromRole="Vaccin" ToRole="Programare" />
   </EntityType>
-  <Association Name="fk_clinica">
+  <Association Name="FK__Programar__idCli__2BFE89A6">
     <End Role="Clinica" Type="Self.Clinica" Multiplicity="1" />
     <End Role="Programare" Type="Self.Programare" Multiplicity="*" />
     <ReferentialConstraint>
@@ -227,7 +230,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="fk_user">
+  <Association Name="FK__Programar__idUse__2CF2ADDF">
     <End Role="Users" Type="Self.Users" Multiplicity="1" />
     <End Role="Programare" Type="Self.Programare" Multiplicity="*" />
     <ReferentialConstraint>
@@ -236,6 +239,18 @@
       </Principal>
       <Dependent Role="Programare">
         <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Programar__idVac__2B0A656D">
+    <End Role="Vaccin" Type="Self.Vaccin" Multiplicity="1" />
+    <End Role="Programare" Type="Self.Programare" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vaccin">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Programare">
+        <PropertyRef Name="idVaccin" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -255,7 +270,7 @@
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="Users" EntityType="Self.Users" />
     <EntitySet Name="Vaccin" EntityType="Self.Vaccin" />
-    <AssociationSet Name="fk_clinica" Association="Self.fk_clinica">
+    <AssociationSet Name="FK__Programar__idCli__2BFE89A6" Association="Self.FK__Programar__idCli__2BFE89A6">
       <End Role="Clinica" EntitySet="Clinica" />
       <End Role="Programare" EntitySet="Programare" />
     </AssociationSet>
@@ -279,8 +294,12 @@
       <End Role="Users" EntitySet="Users" />
       <End Role="ProfilMedical" EntitySet="ProfilMedical" />
     </AssociationSet>
-    <AssociationSet Name="fk_user" Association="Self.fk_user">
+    <AssociationSet Name="FK__Programar__idUse__2CF2ADDF" Association="Self.FK__Programar__idUse__2CF2ADDF">
       <End Role="Users" EntitySet="Users" />
+      <End Role="Programare" EntitySet="Programare" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Programar__idVac__2B0A656D" Association="Self.FK__Programar__idVac__2B0A656D">
+      <End Role="Vaccin" EntitySet="Vaccin" />
       <End Role="Programare" EntitySet="Programare" />
     </AssociationSet>
   </EntityContainer>

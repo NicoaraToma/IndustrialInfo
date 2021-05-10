@@ -20,6 +20,7 @@ namespace ezvax.Controllers
                 medicalProfile.genders = dbModel.Gen.ToList<Gen>();
                 medicalProfile.grupeSange = dbModel.GrupeSange.ToList<GrupeSange>();
                 medicalProfile.Anticorpis = dbModel.Anticorpi.ToList<Anticorpi>();
+                
             };
             return View(medicalProfile); 
         }
@@ -33,12 +34,16 @@ namespace ezvax.Controllers
                 medicalProfile.genders = dbModel.Gen.ToList<Gen>();
                 medicalProfile.grupeSange = dbModel.GrupeSange.ToList<GrupeSange>();
                 medicalProfile.Anticorpis = dbModel.Anticorpi.ToList<Anticorpi>();
+
+
                 medicalProfile.idUser = (int)Session["userID"];
                 if (dbModel.ProfilMedical.Any(x => x.idUser == medicalProfile.idUser))
                 {
                     ViewBag.DuplicateMessage = "ID already registered.";
                     return View("MedicalProfile", medicalProfile);
                 }
+                Session["ID"] = medicalProfile.id;
+              
                 medicalProfile.ageErrorMessage = "Varsta minima este de 18 ani.";
                 dbModel.ProfilMedical.Add(medicalProfile);
                 dbModel.SaveChanges();
@@ -52,6 +57,7 @@ namespace ezvax.Controllers
                 medicalProfile.grupeSange = dbModel.GrupeSange.ToList<GrupeSange>();
                 medicalProfile.simptomes = dbModel.Simptome.ToList<Simptome>();
                 medicalProfile.Anticorpis = dbModel.Anticorpi.ToList<Anticorpi>();
+
             };
             return View("MedicalProfile",medicalProfile);
         }
