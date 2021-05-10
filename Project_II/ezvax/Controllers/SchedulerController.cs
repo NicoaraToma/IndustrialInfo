@@ -14,15 +14,10 @@ namespace ezvax.Controllers
         public ActionResult Appointment()
         {
             Programare programare = new Programare();
-            ProfilMedical profilMedical = new ProfilMedical();
             using (HospitalEntities dbModel = new HospitalEntities())
             {
                 programare.clinici = dbModel.Clinica.ToList<Clinica>();
                 programare.vaccine = dbModel.Vaccin.ToList<Vaccin>();
-                //if (dbModel.ProfilMedical.Any(x => x.idUser == profilMedical.idUser))
-               // {
-              //      Session["profileID"] = profilMedical.id;
-                ///}
             }
             return View(programare);
         }
@@ -31,6 +26,10 @@ namespace ezvax.Controllers
         {
             using (HospitalEntities dbModel = new HospitalEntities())
             {
+                if (dbModel.ProfilMedical.Any(x => x.idUser == (int)Session["userID"]))
+                {
+                    Session["profileID"] = true;
+                }
                 programareModel.idUser = (int)Session["userID"];
                 programareModel.clinici = dbModel.Clinica.ToList<Clinica>();
                 programareModel.vaccine = dbModel.Vaccin.ToList<Vaccin>();
