@@ -49,8 +49,5 @@ namespace ezvax.Models
         public List<GrupeSange> grupeSange { get; set; }
         public string ageErrorMessage { get; set; }
         public virtual Users Users { get; set; }
-        [NotMapped]
-        public List<Vaccin> vaccine { get; set; }
-
     }
 }

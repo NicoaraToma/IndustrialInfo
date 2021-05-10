@@ -27,15 +27,15 @@ namespace ezvax.Controllers
                 }
                 else
                 {
-                    Session["adminID"] = adminModel.id;
-                    Session["userAdmin"] = adminModel.userAdmin;
+                    Session["userID"] = adminModel.id;
+                    Session["userName"] = adminModel.userAdmin;
                     return RedirectToAction("MedicalProfile", "Profile");
                 }
             }
         }
         public ActionResult LogOut()
         {
-            int adminId = (int)Session["adminID"];
+            int adminId = (int)Session["userID"];
             Session.Abandon();
             return RedirectToAction("AdminAuth", "Admin");
         }

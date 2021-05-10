@@ -80,7 +80,6 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="idUser" Type="int" Nullable="false" />
     <Property Name="idClinica" Type="int" Nullable="false" />
-    <Property Name="idVaccin" Type="int" Nullable="false" />
     <Property Name="dataVaccin" Type="date" Nullable="false" />
     <Property Name="dataRapel" Type="date" Nullable="false" />
   </EntityType>
@@ -135,14 +134,14 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="int" Nullable="false" />
-    <Property Name="nume" Type="varchar" MaxLength="55" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nume" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="durataRapel" Type="int" Nullable="false" />
     <Property Name="cantitate" Type="int" Nullable="false" />
-    <Property Name="contraindicatii" Type="varchar(max)" />
-    <Property Name="alergii" Type="varchar(max)" />
+    <Property Name="contraindicatii" Type="nvarchar(max)" />
+    <Property Name="alergii" Type="nvarchar(max)" />
   </EntityType>
-  <Association Name="FK__Programar__idCli__2BFE89A6">
+  <Association Name="fk_clinica">
     <End Role="Clinica" Type="Self.Clinica" Multiplicity="1" />
     <End Role="Programare" Type="Self.Programare" Multiplicity="*" />
     <ReferentialConstraint>
@@ -151,30 +150,6 @@
       </Principal>
       <Dependent Role="Programare">
         <PropertyRef Name="idClinica" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Programar__idUse__2CF2ADDF">
-    <End Role="Users" Type="Self.Users" Multiplicity="1" />
-    <End Role="Programare" Type="Self.Programare" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="Programare">
-        <PropertyRef Name="idUser" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Programar__idVac__2B0A656D">
-    <End Role="Vaccin" Type="Self.Vaccin" Multiplicity="1" />
-    <End Role="Programare" Type="Self.Programare" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Vaccin">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="Programare">
-        <PropertyRef Name="idVaccin" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -199,6 +174,18 @@
       </Principal>
       <Dependent Role="Stoc">
         <PropertyRef Name="idClinica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_user">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Programare" Type="Self.Programare" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Programare">
+        <PropertyRef Name="idUser" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -254,16 +241,8 @@
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Vaccin" EntityType="Self.Vaccin" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Programar__idCli__2BFE89A6" Association="Self.FK__Programar__idCli__2BFE89A6">
+    <AssociationSet Name="fk_clinica" Association="Self.fk_clinica">
       <End Role="Clinica" EntitySet="Clinica" />
-      <End Role="Programare" EntitySet="Programare" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Programar__idUse__2CF2ADDF" Association="Self.FK__Programar__idUse__2CF2ADDF">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="Programare" EntitySet="Programare" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Programar__idVac__2B0A656D" Association="Self.FK__Programar__idVac__2B0A656D">
-      <End Role="Vaccin" EntitySet="Vaccin" />
       <End Role="Programare" EntitySet="Programare" />
     </AssociationSet>
     <AssociationSet Name="fk_postcom" Association="Self.fk_postcom">
@@ -273,6 +252,10 @@
     <AssociationSet Name="fk_stoc" Association="Self.fk_stoc">
       <End Role="Clinica" EntitySet="Clinica" />
       <End Role="Stoc" EntitySet="Stoc" />
+    </AssociationSet>
+    <AssociationSet Name="fk_user" Association="Self.fk_user">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Programare" EntitySet="Programare" />
     </AssociationSet>
     <AssociationSet Name="fk_usercom" Association="Self.fk_usercom">
       <End Role="Users" EntitySet="Users" />
