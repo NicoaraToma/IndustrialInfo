@@ -17,18 +17,13 @@ namespace ezvax.Models
     public partial class Admin
     {
         public int id { get; set; }
+        [DisplayName("User")]
         [Required(ErrorMessage = "This field is required")]
-        [DisplayName("user")]
         public string userAdmin { get; set; }
+        [DisplayName("Password")]
         [Required(ErrorMessage = "This field is required")]
         [DataType(DataType.Password)]
         public string password { get; set; }
-        [Required(ErrorMessage = "This field is required")]
         public string AdminErrorMessage { get; set; }
-        [Required(ErrorMessage = "This field is required")]
-        [DataType(DataType.Password)]
-        [DisplayName("confirmPassword")]
-        [Compare("password")]
-        public string confirmPassword { get; set; }
     }
 }

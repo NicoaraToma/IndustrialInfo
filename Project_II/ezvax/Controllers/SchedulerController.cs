@@ -19,10 +19,10 @@ namespace ezvax.Controllers
             {
                 programare.clinici = dbModel.Clinica.ToList<Clinica>();
                 programare.vaccine = dbModel.Vaccin.ToList<Vaccin>();
-                if (dbModel.ProfilMedical.Any(x => x.idUser == profilMedical.idUser))
-                {
-                    Session["profileID"] = profilMedical.id;
-                }
+                //if (dbModel.ProfilMedical.Any(x => x.idUser == profilMedical.idUser))
+               // {
+              //      Session["profileID"] = profilMedical.id;
+                ///}
             }
             return View(programare);
         }

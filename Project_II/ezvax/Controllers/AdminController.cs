@@ -23,19 +23,19 @@ namespace ezvax.Controllers
                 if (userDetails == null)
                 {
                     adminModel.AdminErrorMessage = "Wrong username or password.";
-                    return View("Login", adminModel);
+                    return View("AdminAuth", adminModel);
                 }
                 else
                 {
-                    Session["userID"] = adminModel.id;
-                    Session["userName"] = adminModel.userAdmin;
+                    Session["adminID"] = adminModel.id;
+                    Session["userAdmin"] = adminModel.userAdmin;
                     return RedirectToAction("MedicalProfile", "Profile");
                 }
             }
         }
         public ActionResult LogOut()
         {
-            int adminId = (int)Session["userID"];
+            int adminId = (int)Session["adminID"];
             Session.Abandon();
             return RedirectToAction("AdminAuth", "Admin");
         }

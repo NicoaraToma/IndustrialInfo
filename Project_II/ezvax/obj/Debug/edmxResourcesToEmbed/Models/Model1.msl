@@ -88,6 +88,7 @@
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="idUser" ColumnName="idUser" />
           <ScalarProperty Name="idClinica" ColumnName="idClinica" />
+          <ScalarProperty Name="idVaccin" ColumnName="idVaccin" />
           <ScalarProperty Name="dataVaccin" ColumnName="dataVaccin" />
           <ScalarProperty Name="dataRapel" ColumnName="dataRapel" />
         </MappingFragment>
