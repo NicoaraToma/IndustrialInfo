@@ -15,7 +15,7 @@ namespace ezvax.Controllers
         {
             Programare programare = new Programare();
             using (HospitalEntities dbModel = new HospitalEntities())
-            {
+            { 
                 programare.clinici = dbModel.Clinica.ToList<Clinica>();
                 programare.vaccine = dbModel.Vaccin.ToList<Vaccin>();
             }
@@ -26,14 +26,12 @@ namespace ezvax.Controllers
         {
             using (HospitalEntities dbModel = new HospitalEntities())
             {
-                if (dbModel.ProfilMedical.Any(x => x.idUser == (int)Session["userID"]))
-                {
-                    Session["profileID"] = true;
-                }
+               
                 programareModel.idUser = (int)Session["userID"];
                 programareModel.clinici = dbModel.Clinica.ToList<Clinica>();
                 programareModel.vaccine = dbModel.Vaccin.ToList<Vaccin>();
-                if (dbModel.Programare.Any(x => x.idUser == programareModel.idUser))
+                var appointment=dbModel.Programare.Where(pr => pr.idUser == programareModel.idUser).FirstOrDefault();
+                if (appointment!=null)
                 {
                     ViewBag.DuplicateMessage = "Appointment already registered.";
                     return View("Appointment", programareModel);

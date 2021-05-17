@@ -27,10 +27,20 @@ namespace ezvax.Controllers
                 }
                 else
                 {
-                    Session["userID"] = userDetails.id;
-                    Session["userName"] = userDetails.nume;
-                    return RedirectToAction("MedicalProfile", "Profile");
+                   var userProfile=db.ProfilMedical.Where(p => p.idUser == userDetails.id).FirstOrDefault();
+                    if (userProfile != null)
+                    {
+                        Session["profileID"] = userProfile.idUser;
+                        return RedirectToAction("Appointment", "Scheduler");
+                    }
+                    else {
+                        Session["userID"] = userDetails.id;
+                        Session["userName"] = userDetails.nume;
+                        return RedirectToAction("MedicalProfile", "Profile");
+                    }
+                   
                 }
+                
             }
         }
         public ActionResult LogOut()

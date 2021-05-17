@@ -21,12 +21,18 @@ namespace ezvax.Controllers
         {
             using (HospitalEntities dbModel = new HospitalEntities())
             {
-                if (dbModel.Users.Any(x => x.CNP == userModel.CNP))
+                var userDetails = dbModel.Users.Where(u => u.CNP == userModel.CNP).FirstOrDefault();
+               
+                if (userDetails!=null)
                 {
                     ViewBag.DuplicateMessage = "CNP already registered.";
                     return View("SingUp", userModel);
                 }
-
+                if (userModel.ValidareCNP() == false)
+                {
+                    ViewBag.ErrorMessage = "CNP is invalid";
+                    return View("SingUp", userModel);
+                }
                 dbModel.Users.Add(userModel);
                 dbModel.SaveChanges();
             }

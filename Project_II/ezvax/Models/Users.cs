@@ -32,8 +32,10 @@ namespace ezvax.Models
         public string prenume { get; set; }
         [Required(ErrorMessage = "This field is required")]
         public string CNP { get; set; }
+        [DataType(DataType.EmailAddress)]
         public string email { get; set; }
         [Required(ErrorMessage = "This field is required")]
+        [DataType(DataType.PhoneNumber)]
         public string numarTelefon { get; set; }
         [Required(ErrorMessage = "This field is required")]
         [DataType(DataType.Password)]
@@ -44,7 +46,32 @@ namespace ezvax.Models
         [DisplayName("confirmPassword")]
         [Compare("password")]
         public string confirmPassword { get; set; }
+        public bool ValidareCNP()
+        {
+            char[] array = this.CNP.ToCharArray();
+            bool okCNP = true;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] < 30 && array[i] > 39)
+                    return false;
+            }
+            
+            if (!(array[0] == '1' || array[0] == '2' || array[0] == '5' || array[0] == '6'))
+                okCNP = false;
+            if(array.Length!=13)
+                okCNP = false;
+            if(!((array[3]*10 + array[4])!=0  && (array[3]*10 + array[4]) < 13))
+                okCNP = false;
+            if (!((array[5] * 10 + array[6]) != 0 && (array[5] * 10 + array[6]) < 32))
+                okCNP = false;
+            if (!((array[7] * 10 + array[8]) != 0 && (array[7] * 10 + array[8]) < 53))
+                okCNP = false;
 
+            if (okCNP == true)
+                return true;
+            else return false;
+        }
+        
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comentariu> Comentariu { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
