@@ -20,7 +20,7 @@ namespace ezvax.Models
         public Nullable<int> stocPfizer { get; set; }
         public Nullable<int> stocSputnik { get; set; }
         public Nullable<int> stocModerna { get; set; }
-    
+        public List<Clinica> clinicaList { get; set; }
         public virtual Clinica Clinica { get; set; }
     }
 }

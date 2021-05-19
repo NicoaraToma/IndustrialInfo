@@ -35,16 +35,16 @@ namespace ezvax.Controllers
                 medicalProfile.grupeSange = dbModel.GrupeSange.ToList<GrupeSange>();
                 medicalProfile.Anticorpis = dbModel.Anticorpi.ToList<Anticorpi>();
                 var profilMedical = dbModel.ProfilMedical.Where(p => p.idUser == medicalProfile.idUser).FirstOrDefault();
-                
-                if (profilMedical==null)
+                medicalProfile.idUser =(int) Session["userID"];
+                if (profilMedical!=null)
                 {
                     ViewBag.DuplicateMessage = "ID already registered.";
                     return View("MedicalProfile", medicalProfile);
                 }
-                medicalProfile.ageErrorMessage = "Varsta minima este de 18 ani.";
+
                 dbModel.ProfilMedical.Add(medicalProfile);
                 dbModel.SaveChanges();
-            }
+            };
             ModelState.Clear();
             ViewBag.SuccessMessage = "Profile registration Successful.";
             medicalProfile = new ProfilMedical();

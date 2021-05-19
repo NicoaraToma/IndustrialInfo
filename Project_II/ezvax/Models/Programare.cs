@@ -27,9 +27,13 @@ namespace ezvax.Models
         public int idVaccin { get; set; }
         [DisplayName("Data vaccin")]
         [Required(ErrorMessage = "This field is required")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.DateTime dataVaccin { get; set; }
         [DisplayName("Data rapel")]
         [Required(ErrorMessage = "This field is required")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.DateTime dataRapel { get; set; }
     
         public virtual Clinica Clinica { get; set; }
