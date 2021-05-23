@@ -11,15 +11,24 @@ namespace ezvax.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Stoc
     {
         public int id { get; set; }
+        [DisplayName("Clinici")]
+        [Required(ErrorMessage = "Acest camp este necesar")]
         public int idClinica { get; set; }
+        [DisplayName("Stoc Astra Zeneca")]
         public Nullable<int> stocAstraZeneca { get; set; }
+        [DisplayName("Stoc Pfizer")]
         public Nullable<int> stocPfizer { get; set; }
+        [DisplayName("Stoc Sputnik")]
         public Nullable<int> stocSputnik { get; set; }
+        [DisplayName("Stoc Moderna")]
         public Nullable<int> stocModerna { get; set; }
+
         public List<Clinica> clinicaList { get; set; }
         public virtual Clinica Clinica { get; set; }
     }

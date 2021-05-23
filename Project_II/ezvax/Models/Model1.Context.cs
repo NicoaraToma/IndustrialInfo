@@ -36,7 +36,7 @@ namespace ezvax.Models
         public virtual DbSet<Programare> Programare { get; set; }
         public virtual DbSet<Resurse> Resurse { get; set; }
         public virtual DbSet<Simptome> Simptome { get; set; }
-        public virtual DbSet<Stoc> Stoc { get; set; }
+        public virtual DbSet<Stoc> vaccin { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<Vaccin> Vaccin { get; set; }

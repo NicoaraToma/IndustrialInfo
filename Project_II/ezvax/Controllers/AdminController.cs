@@ -12,24 +12,25 @@ namespace ezvax.Controllers
         // GET: Admin
         public ActionResult AdminAuth()
         {
-            return View();
+            Admin adminModel = new Admin();
+            return View(adminModel);
         }
         [HttpPost]
-        public ActionResult Authorize(Admin adminModel)
+        public ActionResult AdminAuth(Admin adminModel)
         {
             using (HospitalEntities db = new HospitalEntities())
             {
-                var userDetails = db.Users.Where(x => x.CNP ==adminModel.userAdmin && x.password == adminModel.password).FirstOrDefault();
-                if (userDetails == null)
+                var adminDetails = db.Admin.Where(a => a.userAdmin ==adminModel.userAdmin && a.password == adminModel.password).FirstOrDefault();
+                if (adminDetails == null)
                 {
-                    adminModel.AdminErrorMessage = "Wrong username or password.";
+                    adminModel.AdminErrorMessage = "User sau parola gresita!";
                     return View("AdminAuth", adminModel);
                 }
                 else
                 {
                     Session["adminID"] = adminModel.id;
                     Session["userAdmin"] = adminModel.userAdmin;
-                    return RedirectToAction("MedicalProfile", "Profile");
+                    return RedirectToAction("Index", "Stock");
                 }
             }
         }

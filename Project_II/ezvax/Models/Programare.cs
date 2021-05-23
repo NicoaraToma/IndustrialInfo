@@ -20,22 +20,22 @@ namespace ezvax.Models
         public int id { get; set; }
         public int idUser { get; set; }
         [DisplayName("Clinica")]
-        [Required(ErrorMessage = "This field is required")]
+        [Required(ErrorMessage = "Acest camp este necesar")]
         public int idClinica { get; set; }
         [DisplayName("Vaccin")]
-        [Required(ErrorMessage = "This field is required")]
+        [Required(ErrorMessage = "Acest camp este necesar")]
         public int idVaccin { get; set; }
         [DisplayName("Data vaccin")]
-        [Required(ErrorMessage = "This field is required")]
+        [Required(ErrorMessage = "Acest camp este necesar")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.DateTime dataVaccin { get; set; }
         [DisplayName("Data rapel")]
-        [Required(ErrorMessage = "This field is required")]
+        [Required(ErrorMessage = "Acest camp este necesar")]
+        public System.DateTime dataRapel { get; set; }
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public System.DateTime dataRapel { get; set; }
-    
+        public string scheduleErrorMessage { get; set; }
         public virtual Clinica Clinica { get; set; }
         public virtual Users Users { get; set; }
         public virtual Vaccin Vaccin { get; set; }

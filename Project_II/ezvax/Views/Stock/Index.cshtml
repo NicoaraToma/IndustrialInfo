@@ -2,6 +2,10 @@
 
 @{
     ViewBag.Title = "Index";
+      if (Session["adminID"] == null)
+    {
+        Response.Redirect("~/Admin/AdminAuth");
+    }
 }
 
 <h2>Index</h2>

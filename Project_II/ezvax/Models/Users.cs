@@ -26,19 +26,24 @@ namespace ezvax.Models
         }
 
         public int id { get; set; }
-        [Required(ErrorMessage = "This field is required")]
+        [Required(ErrorMessage = "Acest camp este necesar")]
+        [DisplayName("Nume")]
         public string nume { get; set; }
-        [Required(ErrorMessage = "This field is required")]
+        [Required(ErrorMessage = "Acest camp este necesar")]
+        [DisplayName("Prenume")]
         public string prenume { get; set; }
-        [Required(ErrorMessage = "This field is required")]
+        [Required(ErrorMessage = "Acest camp este necesar")]
         public string CNP { get; set; }
         [DataType(DataType.EmailAddress)]
+        [DisplayName("Email")]
         public string email { get; set; }
-        [Required(ErrorMessage = "This field is required")]
+        [Required(ErrorMessage = "Acest camp este necesar")]
+        [DisplayName("Numar de telefon")]
         [DataType(DataType.PhoneNumber)]
         public string numarTelefon { get; set; }
-        [Required(ErrorMessage = "This field is required")]
+        [Required(ErrorMessage = "Acest camp este necesar")]
         [DataType(DataType.Password)]
+        [DisplayName("Parola")]
         public string password { get; set; }
         public string cnpErrorMessage { get; set; }
         public string telErrorMessage { get; set; }
@@ -46,7 +51,7 @@ namespace ezvax.Models
         public string LoginErrorMessage { get; set; }
         [Required(ErrorMessage = "This field is required")]
         [DataType(DataType.Password)]
-        [DisplayName("confirmPassword")]
+        [DisplayName("Confirmare parola")]
         [Compare("password")]
         public string confirmPassword { get; set; }
         public bool ValidareCNP()

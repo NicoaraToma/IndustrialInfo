@@ -17,10 +17,10 @@ namespace ezvax.Models
     public partial class Admin
     {
         public int id { get; set; }
-        [DisplayName("User")]
+        [DisplayName("Admin")]
         [Required(ErrorMessage = "This field is required")]
         public string userAdmin { get; set; }
-        [DisplayName("Password")]
+        [DisplayName("Parola")]
         [Required(ErrorMessage = "This field is required")]
         [DataType(DataType.Password)]
         public string password { get; set; }

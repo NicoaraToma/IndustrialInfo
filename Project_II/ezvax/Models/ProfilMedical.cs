@@ -19,19 +19,19 @@ namespace ezvax.Models
     {
         public int id { get; set; }
         public int idUser { get; set; }
-        [Required(ErrorMessage = "This field is required")]
+        [Required(ErrorMessage = "Acest camp este necesar")]
         [Range(18, 99)]
         [DisplayName("Varsta")]
         public int varsta { get; set; }
-        [Required(ErrorMessage = "This field is required")]
+        [Required(ErrorMessage = "Acest camp este necesar")]
         [DisplayName("Gen")]
         public string gen { get; set; }
-        [Required(ErrorMessage = "This field is required")]
+        [Required(ErrorMessage = "Acest camp este necesar")]
         [DisplayName("Grupa sanguina")]
         public string grupaSanguina { get; set; }
         [DisplayName("Boli cronice")]
         public string boliCronice { get; set; }
-        [Required(ErrorMessage = "This field is required")]
+        [Required(ErrorMessage = "Acest camp este necesar")]
         [DisplayName("Anticorpi")]
         public string anticorpi { get; set; }
         [DisplayName("Simptome")]
@@ -39,13 +39,10 @@ namespace ezvax.Models
         [NotMapped]
         public List<Simptome> simptomes { get; set; }
         [NotMapped]
-        [Required(ErrorMessage = "This field is required")]
         public List<Gen> genders { get; set; }
         [NotMapped]
-        [Required(ErrorMessage = "This field is required")]
         public List<Anticorpi> Anticorpis { get; set; }
         [NotMapped]
-        [Required(ErrorMessage = "This field is required")]
         public List<GrupeSange> grupeSange { get; set; }
         public string ageErrorMessage { get; set; }
         public virtual Users Users { get; set; }

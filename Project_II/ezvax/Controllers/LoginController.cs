@@ -22,7 +22,7 @@ namespace ezvax.Controllers
                 var userDetails = db.Users.Where(x => x.CNP == userModel.CNP && x.password == userModel.password).FirstOrDefault();
                 if (userDetails == null)
                 {
-                    userModel.LoginErrorMessage = "Wrong CNP or password.";
+                    userModel.LoginErrorMessage = "CNP sau parola gresita.";
                     return View("Authentification", userModel);
                 }
                 else
@@ -33,12 +33,9 @@ namespace ezvax.Controllers
                         Session["profileID"] = userProfile.idUser;
                         return RedirectToAction("Appointment", "Scheduler");
                     }
-                    else {
                         Session["userID"] = userDetails.id;
                         Session["userName"] = userDetails.nume;
                         return RedirectToAction("MedicalProfile", "Profile");
-                    }
-                   
                 }
                 
             }

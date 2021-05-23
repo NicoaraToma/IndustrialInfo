@@ -24,28 +24,28 @@ namespace ezvax.Controllers
                 var userDetails = dbModel.Users.Where(u => u.CNP == userModel.CNP).FirstOrDefault();
                 if (userDetails != null)
                 {
-                    ViewBag.DuplicateMessage = "User already registered";
+                    ViewBag.DuplicateMessage = "User deja inregistrat!";
                     return View("Registration", userModel);
                 }
                 if (userModel.ValidareCNP() == false)
                 {
-                    userModel.cnpErrorMessage = "CNP format is invalid";
+                    userModel.cnpErrorMessage = "Formatul CNP-ului este incorect!";
                     return View("Registration", userModel);
                 }
                 if (userModel.ValidareTel() == false)
                 {
-                    userModel.telErrorMessage = "Phone number is incorect";
+                    userModel.telErrorMessage = "Formatul numarului de telefon este incorect!";
                     return View("Registration", userModel);
                 }
                 if (userModel.ValidarePass() == false)
                 {
-                    userModel.passErrorMessage = "Pass format is invalid";
+                    userModel.passErrorMessage = "Formatul parolei este incorect!";
                     return View("Registration", userModel);
                 }
                 dbModel.Users.Add(userModel);
                 dbModel.SaveChanges();
                 ModelState.Clear();
-                ViewBag.SuccessMessage = "User registration Successful.";
+                ViewBag.SuccessMessage = "User inregistrat cu succes!";
                 return RedirectToAction("Authentification", "Login");
                 
             }

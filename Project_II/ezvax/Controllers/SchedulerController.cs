@@ -33,7 +33,7 @@ namespace ezvax.Controllers
                 var appointment=dbModel.Programare.Where(pr => pr.idUser == programareModel.idUser).FirstOrDefault();
                 if (appointment!=null)
                 {
-                    ViewBag.DuplicateMessage = "Appointment already registered.";
+                    ViewBag.scheduleErrorMessage = "Appointment already registered.";
                     return View("Appointment", programareModel);
                 }
                 

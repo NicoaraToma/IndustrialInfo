@@ -1,6 +1,6 @@
 ﻿@model ezvax.Models.Programare
 @{
-    ViewBag.Title = "Appointment";
+    ViewBag.Title = "Programari";
     Layout = null;
     if (Session["userID"] == null)
     {
@@ -62,7 +62,7 @@
                     @Html.ValidationMessageFor(model => model.dataRapel, "", new { @class = "text-danger" })
                 </div>
             </div>
-
+            <div><label class="field-validation-error">@Html.DisplayFor(model => model.scheduleErrorMessage)</label></div>
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" value="Create" class="btn btn-default" />

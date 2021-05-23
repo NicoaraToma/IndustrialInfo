@@ -12,10 +12,9 @@ namespace ezvax.Controllers
     public class StockController : Controller
     {
         private HospitalEntities db=new HospitalEntities();
-        // GET: Stock
         public ActionResult Index()
         {
-            var stock = db.Stoc.Include(s => s.Clinica);
+            var stock = db.vaccin.Include(s => s.Clinica);
             return View(stock.ToList());
         }
         public ActionResult Details(int? id)
@@ -24,7 +23,7 @@ namespace ezvax.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Stoc stock = db.Stoc.Find(id);
+            Stoc stock = db.vaccin.Find(id);
             if (stock == null)
             {
                 return HttpNotFound();
@@ -47,23 +46,22 @@ namespace ezvax.Controllers
             using (HospitalEntities db = new HospitalEntities())
             {
                 stock.clinicaList = db.Clinica.ToList<Clinica>();
-                var stocDetails = db.Stoc.Where(s => s.id == stock.id).FirstOrDefault();
+                var stocDetails = db.vaccin.Where(s => s.id == stock.id).FirstOrDefault();
                 if (stocDetails != null)
                 {
-                    ViewBag.DuplicateMessage = "Stock already registered.";
+                    ViewBag.DuplicateMessage = "Stoc deja inregistrat!";
                     return View("Create", stock);
 
                 }
-                db.Stoc.Add(stock);
+                db.vaccin.Add(stock);
                 db.SaveChanges();
                 
             };
             ModelState.Clear();
-            ViewBag.SuccessMessage = "Stoc add successfully.";
-            stock = new Stoc();
+            ViewBag.SuccessMessage = "Stoc inregistrat cu succes!";
             using (HospitalEntities db = new HospitalEntities())
             {
-                var stocDetails = db.Stoc.Where(s => s.id == stock.id).FirstOrDefault();
+                stock.clinicaList = db.Clinica.ToList<Clinica>();
             }
             return RedirectToAction("Index");
         }
@@ -73,7 +71,7 @@ namespace ezvax.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Stoc stock = db.Stoc.Find(id);
+            Stoc stock = db.vaccin.Find(id);
             if (stock == null)
             {
                 return HttpNotFound();
@@ -83,10 +81,6 @@ namespace ezvax.Controllers
             }
             return View(stock);
         }
-
-        // POST: Subjects/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,idClinica,stocAstraZeneca,stocPfizer,stocSputnik,StocModerna")] Stoc stock)
@@ -110,21 +104,19 @@ namespace ezvax.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Stoc stoc = db.Stoc.Find(id);
+            Stoc stoc = db.vaccin.Find(id);
             if (stoc == null)
             {
                 return HttpNotFound();
             }
             return View(stoc);
         }
-
-        // POST: Subjects/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Stoc stock = db.Stoc.Find(id);
-            db.Stoc.Remove(stock);
+            Stoc stock = db.vaccin.Find(id);
+            db.vaccin.Remove(stock);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

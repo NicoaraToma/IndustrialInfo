@@ -38,7 +38,7 @@ namespace ezvax.Controllers
                 medicalProfile.idUser =(int) Session["userID"];
                 if (profilMedical!=null)
                 {
-                    ViewBag.DuplicateMessage = "ID already registered.";
+                    ViewBag.DuplicateMessage = "Profil medical deja inregistrat!";
                     return View("MedicalProfile", medicalProfile);
                 }
 
@@ -46,7 +46,7 @@ namespace ezvax.Controllers
                 dbModel.SaveChanges();
             };
             ModelState.Clear();
-            ViewBag.SuccessMessage = "Profile registration Successful.";
+            ViewBag.SuccessMessage = "Profil medical inregistrat cu succes!";
             medicalProfile = new ProfilMedical();
             using (HospitalEntities dbModel = new HospitalEntities())
             {
